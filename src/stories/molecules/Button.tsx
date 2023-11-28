@@ -1,37 +1,21 @@
 import React from 'react';
-import './button.css';
+import featherIcons from "../assets/elements-dist-frontend/icons/feather-sprite.svg";
 
 interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
   primary?: boolean;
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   * Is this the button disabled?
-   */
+  size?: 'icon' | 'small' | 'medium' | 'large';
   isDisabled?: boolean;
-  /**
-   * Optional click handler
-   */
   onClick?: () => void;
-  /**
-   * Things that go inside the button, such as a text label.
-   */
   children?: React.ReactNode;
+  iconName?: string;
 }
 
-/**
- * Primary UI component for user interaction
- */
 export const Button = ({
   primary = true,
   size = 'medium',
   isDisabled = false,
   children,
+  iconName,
   ...props
 }: ButtonProps) => {
   let mode = primary ? 'btn btn-primary' : 'btn btn-secondary';
@@ -45,8 +29,12 @@ export const Button = ({
       break;
   }
 
-  return (
-    <button
+  if (size == 'icon') {
+    return <svg key="icon" className="icon" aria-hidden="true">
+      <use xlinkHref={`${featherIcons}${iconName}`}/>
+    </svg>
+  } else {
+    return <button
       type="button"
       className={mode}
       style={{
@@ -57,9 +45,9 @@ export const Button = ({
       disabled={isDisabled}
       {...props}
     >
-      <div className="text-center" style={{ display: 'flex', alignItems: 'center' }}>
+      <div className="text-center" style={{display: 'flex', alignItems: 'center'}}>
         {children}
       </div>
     </button>
-  );
+  }
 };
