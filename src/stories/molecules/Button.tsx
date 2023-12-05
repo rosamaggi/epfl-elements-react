@@ -29,7 +29,7 @@ export const Button = ({
       break;
   }
 
-  if (size == 'icon') {
+  if (size === 'icon') {
     return <svg key="icon" className="icon" aria-hidden="true">
       <use xlinkHref={`${featherIcons}${iconName}`}/>
     </svg>

@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
 import { CompactItemList } from './CompactItemList';
-import featherIcons from "../assets/elements-dist-frontend/icons/feather-sprite.svg";
 import React from "react";
-import {render} from "react-dom";
 
 const meta = {
     title: 'Molecules/CompactItemList',

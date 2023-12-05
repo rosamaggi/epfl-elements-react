@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
 import { RadioButton } from './RadioButton';
 import React from "react";
 
@@ -67,7 +66,7 @@ export const NoValue: Story = {
   }
 };
 
-export const inLine: Story = {
+export const InLine: Story = {
   args: {
     name: 'test_Name',
     id: 'test_primary',
