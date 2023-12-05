@@ -9,6 +9,7 @@ interface CompactItemListProps {
   border?: 'none' | 'solid' | 'dashed' | 'dotted';
   strikethrough: boolean;
   onClickIcon?: () => void;
+  onClickItem?: () => void;
 }
 
 /**
@@ -20,7 +21,8 @@ export const CompactItemList = ({
   icon,
   border = 'solid',
   strikethrough = false,
-  onClickIcon
+  onClickIcon,
+  onClickItem
 }: CompactItemListProps) => {
 
   let cardStyle: string = 'card';
@@ -44,7 +46,7 @@ export const CompactItemList = ({
   return (
       <div className={cardStyle}>
           <div className="d-flex flex-row justify-content-between">
-            <div className={rightDivStyle}>
+            <div className={rightDivStyle} onClick={onClickItem}>
               {title ? (
                 strikethrough ?
                   <h5 className="card-text"><s>{title}</s></h5>
