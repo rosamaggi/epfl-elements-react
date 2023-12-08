@@ -9,6 +9,7 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {onChange: {action: 'changed'}}
 } satisfies Meta<typeof RadioButton>;
 
 export default meta;
