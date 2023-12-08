@@ -15,7 +15,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Multiple: Story = {
   args: {
     suggestions: [
       {
@@ -37,6 +37,30 @@ export const Default: Story = {
         label: 'label 1'
       }
     ],
+    multiple: true
+  }
+};
+
+export const single: Story = {
+  args: {
+    suggestions: [
+      {
+        value: '1',
+        label: 'label 1'
+      },
+      {
+        value: '2',
+        label: 'label 2'
+      },
+      {
+        value: '3',
+        label: 'label 3'
+      }
+    ],
+    itemValue: {
+      value: '1',
+      label: 'label 1'
+    },
     multiple: false
   }
 };

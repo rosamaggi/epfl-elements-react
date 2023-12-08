@@ -11,17 +11,19 @@ interface AutocompleteProps {
   suggestions: Item[];
   selected?: Item[];
   multiple?: boolean;
+  itemValue?: Item;
 }
 
 export const Autocomplete: React.FC<AutocompleteProps & FormControlProps> = ({
    suggestions,
    selected,
    multiple = false,
+   itemValue,
    ...rest
   }: AutocompleteProps & FormControlProps) => {
   const [filteredSuggestions, setFilteredSuggestions] = useState<Item[]>([]);
-  const [inputValue, setInputValue] = useState('');
-  const [selectedSuggestions, setSelectedSuggestions] = useState<Item[]>(selected? selected : []);
+  const [inputValue, setInputValue] = useState(itemValue ? itemValue.label : '');
+  const [selectedSuggestions, setSelectedSuggestions] = useState<Item[]>(selected ? selected : []);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -75,7 +77,7 @@ export const Autocomplete: React.FC<AutocompleteProps & FormControlProps> = ({
           placeholder="Type something..."
         />
         {filteredSuggestions.length > 0 && (
-          <ul className="list-group" style={{ position: 'absolute', zIndex: 1 }}>
+          <ul className="list-group" style={{ position: 'absolute', zIndex: 1, width: '100%' }}>
             {filteredSuggestions.map((suggestion, index) => (
               <li
                 key={index}
@@ -90,23 +92,17 @@ export const Autocomplete: React.FC<AutocompleteProps & FormControlProps> = ({
         )}
       </div>
       {multiple && selectedSuggestions.length > 0 && (
-        <div>
+        <div style={{marginTop: '20px'}}>
           <ul className="list-group">
             {selectedSuggestions.map((selected, index) => (
               <li
                 key={index}
                 className="list-group-item"
               >
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}
-                >
+                <div style={{ width: '100%' }} >
                   {selected.label}
                   <svg className="icon feather" aria-hidden="true"
-                       style={{ cursor: 'pointer' }}
+                       style={{ cursor: 'pointer', float: 'right'}}
                        onClick={() => removeSelected(selected)}>
                     <use xlinkHref={`${featherIcons}#trash-2`}></use>
                   </svg>
