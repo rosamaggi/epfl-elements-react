@@ -59,6 +59,13 @@
     height: 100%;
 }
 
+.list-group-item {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
 
 @media (min-width: 768px) {
     .tabs {
